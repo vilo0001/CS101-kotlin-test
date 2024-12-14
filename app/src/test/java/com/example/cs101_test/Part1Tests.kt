@@ -155,33 +155,33 @@ class Part1Tests {
     @Test
     fun `exercise 06 test secondLargest function`() {
         try {
-            val method = Part1Basics::class.java.getDeclaredMethod("secondLargest", List::class.java)
+            val method = clazz.getDeclaredMethod("secondLargest", List::class.java)
             method.isAccessible = true
 
             // Test with a regular list
-            var result = method.invoke(Part1Basics, listOf(1, 2, 3, 4, 5)) as Int
+            var result = method.invoke(instance, listOf(1, 2, 3, 4, 5)) as Int
             assertEquals(4, result)
 
             // Test with duplicate values
-            result = method.invoke(Part1Basics, listOf(5, 1, 5, 3, 4)) as Int
+            result = method.invoke(instance, listOf(5, 1, 5, 3, 4)) as Int
             assertEquals(5, result)
 
             // Test with negative values
-            result = method.invoke(Part1Basics, listOf(-1, -2, -3, -4, -5)) as Int
+            result = method.invoke(instance, listOf(-1, -2, -3, -4, -5)) as Int
             assertEquals(-2, result)
 
             // Test with a list of two elements
-            result = method.invoke(Part1Basics, listOf(10, 20)) as Int
+            result = method.invoke(instance, listOf(10, 20)) as Int
             assertEquals(10, result)
 
             // Test with a large list
-            result = method.invoke(Part1Basics, listOf(100, 99, 98, 97, 96, 95, 94)) as Int
+            result = method.invoke(instance, listOf(100, 99, 98, 97, 96, 95, 94)) as Int
             assertEquals(99, result)
 
             // Edge cases
             // Test with a list with one element should throw an exception
             try {
-                method.invoke(Part1Basics, listOf(42))
+                method.invoke(instance, listOf(42))
                 fail("Exercise 6 failed: Expected IndexOutOfBoundsException for single element list")
             } catch (e: InvocationTargetException) {
                 assertTrue(e.targetException is IndexOutOfBoundsException)
@@ -189,7 +189,7 @@ class Part1Tests {
 
             // Test with an empty list should throw an exception
             try {
-                method.invoke(Part1Basics, emptyList<Int>())
+                method.invoke(instance, emptyList<Int>())
                 fail("Exercise 6 failed: Expected IndexOutOfBoundsException for empty list")
             } catch (e: InvocationTargetException) {
                 assertTrue(e.targetException is IndexOutOfBoundsException)
@@ -206,10 +206,10 @@ class Part1Tests {
     @Test
     fun `exercise 07 test greetUser function`() {
         try {
-            val method = Part1Basics::class.java.getDeclaredMethod("greetUser", String::class.java)
+            val method = clazz.getDeclaredMethod("greetUser", String::class.java)
             method.isAccessible = true
 
-            val result = method.invoke(Part1Basics, "Alice") as String
+            val result = method.invoke(instance, "Alice") as String
             assertEquals("Hello, Alice!", result)
         } catch (e: NoSuchMethodException) {
             println("Exercise 7 failed: 'greetUser' method not found.")
@@ -224,17 +224,17 @@ class Part1Tests {
     @Test
     fun `exercise 08 test findMax function`() {
         try {
-            val method = Part1Basics::class.java.getDeclaredMethod("findMax", List::class.java)
+            val method = clazz.getDeclaredMethod("findMax", List::class.java)
             method.isAccessible = true
 
-            var result = method.invoke(Part1Basics, listOf(1, 2, 3, 4, 5)) as Int
+            var result = method.invoke(instance, listOf(1, 2, 3, 4, 5)) as Int
             assertEquals(5, result)
 
-            result = method.invoke(Part1Basics, listOf(-1, -2, -3, -4, -5)) as Int
+            result = method.invoke(instance, listOf(-1, -2, -3, -4, -5)) as Int
             assertEquals(-1, result)
 
             try {
-                method.invoke(Part1Basics, emptyList<Int>())
+                method.invoke(instance, emptyList<Int>())
                 fail("Exercise 8 failed: Expected IllegalArgumentException for empty list")
             } catch (e: InvocationTargetException) {
                 assertTrue(e.targetException is IllegalArgumentException)
@@ -252,15 +252,15 @@ class Part1Tests {
     @Test
     fun `exercise 09 test getValue function`() {
         try {
-            val method = Part1Basics::class.java.getDeclaredMethod("getValue", Map::class.java, String::class.java)
+            val method = clazz.getDeclaredMethod("getValue", Map::class.java, String::class.java)
             method.isAccessible = true
 
             val map = mapOf("a" to 1, "b" to 2, "c" to 3)
 
-            var result = method.invoke(Part1Basics, map, "b") as Int?
+            var result = method.invoke(instance, map, "b") as Int?
             assertEquals(2, result)
 
-            result = method.invoke(Part1Basics, map, "d") as Int?
+            result = method.invoke(instance, map, "d") as Int?
             assertNull(result)
         } catch (e: NoSuchMethodException) {
             println("Exercise 9 failed: 'getValue' method not found.")
@@ -275,10 +275,10 @@ class Part1Tests {
     @Test
     fun `exercise 10 test calculateArea function`() {
         try {
-            val method = Part1Basics::class.java.getDeclaredMethod("calculateArea", Double::class.java, Double::class.java)
+            val method = clazz.getDeclaredMethod("calculateArea", Double::class.java, Double::class.java)
             method.isAccessible = true
 
-            val result = method.invoke(Part1Basics, 5.0, 10.0) as Double
+            val result = method.invoke(instance, 5.0, 10.0) as Double
             assertEquals(50.0, result, 0.0)
         } catch (e: NoSuchMethodException) {
             println("Exercise 10 failed: 'calculateArea' method not found.")
@@ -293,16 +293,16 @@ class Part1Tests {
     @Test
     fun `exercise 11 test isPositive function`() {
         try {
-            val method = Part1Basics::class.java.getDeclaredMethod("isPositive", Int::class.java)
+            val method = clazz.getDeclaredMethod("isPositive", Int::class.java)
             method.isAccessible = true
 
-            var result = method.invoke(Part1Basics, 10) as Boolean
+            var result = method.invoke(instance, 10) as Boolean
             assertTrue(result)
 
-            result = method.invoke(Part1Basics, -10) as Boolean
+            result = method.invoke(instance, -10) as Boolean
             assertFalse(result)
 
-            result = method.invoke(Part1Basics, 0) as Boolean
+            result = method.invoke(instance, 0) as Boolean
             assertFalse(result)
         } catch (e: NoSuchMethodException) {
             println("Exercise 11 failed: 'isPositive' method not found.")
@@ -317,10 +317,10 @@ class Part1Tests {
     @Test
     fun `exercise 12 test calculateAverage function`() {
         try {
-            val method = Part1Basics::class.java.getDeclaredMethod("calculateAverage", Array<Double>::class.java)
+            val method = clazz.getDeclaredMethod("calculateAverage", Array<Double>::class.java)
             method.isAccessible = true
 
-            val result = method.invoke(Part1Basics, arrayOf(1.0, 2.0, 3.0, 4.0, 5.0)) as Double
+            val result = method.invoke(instance, arrayOf(1.0, 2.0, 3.0, 4.0, 5.0)) as Double
             assertEquals(3.0, result, 0.0)
         } catch (e: NoSuchMethodException) {
             println("Exercise 12 failed: 'calculateAverage' method not found.")
@@ -335,10 +335,10 @@ class Part1Tests {
     @Test
     fun `exercise 13 test filterNegativeNumbers function`() {
         try {
-            val method = Part1Basics::class.java.getDeclaredMethod("filterNegativeNumbers", List::class.java)
+            val method = clazz.getDeclaredMethod("filterNegativeNumbers", List::class.java)
             method.isAccessible = true
 
-            val result = method.invoke(Part1Basics, listOf(1, -2, 3, -4, 5)) as List<Int>
+            val result = method.invoke(instance, listOf(1, -2, 3, -4, 5)) as List<Int>
             assertEquals(listOf(1, 3, 5), result)
         } catch (e: NoSuchMethodException) {
             println("Exercise 13 failed: 'filterNegativeNumbers' method not found.")
@@ -353,10 +353,10 @@ class Part1Tests {
     @Test
     fun `exercise 14 test charFrequency function`() {
         try {
-            val method = Part1Basics::class.java.getDeclaredMethod("charFrequency", String::class.java)
+            val method = clazz.getDeclaredMethod("charFrequency", String::class.java)
             method.isAccessible = true
 
-            val result = method.invoke(Part1Basics, "hello") as Map<Char, Int>
+            val result = method.invoke(instance, "hello") as Map<Char, Int>
             assertEquals(mapOf('h' to 1, 'e' to 1, 'l' to 2, 'o' to 1), result)
         } catch (e: NoSuchMethodException) {
             println("Exercise 14 failed: 'charFrequency' method not found.")

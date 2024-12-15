@@ -1,10 +1,14 @@
 # CS101 Test for Kotlin Jetpack Compose
 
-## Table of Contents - NEEDS TO BE UPDATED
+## Table of Contents
 1. [Installation Guide](#installation-guide)
-2. [Test Overview](#test-overview)
+2. [How to check your answers](#how-to-check-your-answers)
+3. [Test Overview](#test-overview)
    1. [Part 1: Kotlin Basics Exercises](#part-1-kotlin-basics-exercises)
    2. [Part 2: Conditional Logic Exercises](#part-2-conditional-logic-exercises)
+   3. [Part 3: Classes and Objects Exercises](#part-3-classes-and-objects-exercises)
+   4. [Part 4: Inheritance and Access Modification Exercises](#part-4-inheritance-and-access-modification-exercises)
+   5. [Part 5: Interfaces and Abstract Classes Exercises](#part-5-interfaces-and-abstract-classes-exercises)
 
 ## Installation Guide
 
@@ -22,7 +26,25 @@
    - Once the project is fully loaded, build it by going to the top bar and selecting "Build" > "Make Project" or pressing `Ctrl+F9` on Windows/Linux (`Cmd+F9` on Mac)
    - Ensure there are no build errors before starting the exercises
 
-## Test Overview - NEEDS TO BE UPDATED
+5. **Find the exercises**
+   - Find the folder "com.example.cs101_test"
+   - Inside it open the folder "exercises"
+     ![Screenshot showing how to find exercises](images/find-exercises.png)
+   - Open the exercise part you want
+   - Start solving the exercises you want after reading the descriptions
+
+## How to check your answers
+1. Find the folder "com.example.cs101_test (test)"
+2. Open the file for the part you want to test - e.g. Part1Tests
+   ![Screenshot showing how to find tests](images/find-tests.png)
+
+4. To the left of the class name inside the file, press "Run 'Part1Tests'" or the name of the test class you have open
+   ![Screenshot showing how to run tests](images/run-tests.png)
+
+6. In the test results, click on the exercise you want to check and look through the result
+   ![Screenshot showing example of test result](images/test-result-example.png)
+
+## Test Overview
 
 ### Part 1: Kotlin Basics Exercises
 - Introduction to Kotlin syntax
@@ -34,3 +56,19 @@
 - Loops
 - Functions
 - Lambda Functions
+
+### Part 3: Classes and Objects Exercises
+- Create and use classes
+- Implement methods
+- Practice object-oriented concepts
+
+### Part 4: Inheritance and Access Modification Exercises
+- Create and extend classes
+- Utilize inheritance
+- Implement access modifiers
+
+### Part 5: Interfaces and Abstract Classes Exercises
+- Define and implement interfaces
+- Create abstract classes
+- Understand polymorphism (classes based on another class/interface)
+

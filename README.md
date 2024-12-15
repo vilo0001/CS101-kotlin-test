@@ -29,19 +29,24 @@
 5. **Find the exercises**
    - Find the folder "com.example.cs101_test"
    - Inside it open the folder "exercises"
+     
      ![Screenshot showing how to find exercises](images/find-exercises.png)
+     
    - Open the exercise part you want
    - Start solving the exercises you want after reading the descriptions
 
 ## How to check your answers
 1. Find the folder "com.example.cs101_test (test)"
 2. Open the file for the part you want to test - e.g. Part1Tests
+   
    ![Screenshot showing how to find tests](images/find-tests.png)
 
 4. To the left of the class name inside the file, press "Run 'Part1Tests'" or the name of the test class you have open
+   
    ![Screenshot showing how to run tests](images/run-tests.png)
 
 6. In the test results, click on the exercise you want to check and look through the result
+   
    ![Screenshot showing example of test result](images/test-result-example.png)
 
 ## Test Overview

@@ -1,6 +1,10 @@
 package com.example.cs101_test.exercises
 
 object Part3ClassesAndObjects {
+    // OBS!!! PLEASE NOTE THAT FROM NOW ON:
+    // IN ALL EXERCISES WITH CLASSES AND INTERFACES IT IS IMPORTANT TO PUT THE ATTRIBUTES IN THE
+    //      SAME ORDER AS WRITTEN IN THE EXERCISE DESCRIPTION ELSE IT WILL NOT PASS THE TEST!
+
     // ---------------------- EXERCISE 1
     // Create a Book class with 3 attributes: title, author, and price (Double)
     // Add a method to display book details called displayDetails that prints title, author and price

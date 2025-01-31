@@ -162,11 +162,13 @@ class Part2Tests {
             val method = clazz.getDeclaredMethod("isPalindrome", String::class.java)
             method.isAccessible = true
 
-            val palindromeResult = method.invoke(instance, "madam")
+            val palindromeResult = method.invoke(instance, "nurses run")
             val nonPalindromeResult = method.invoke(instance, "hello")
 
             println("Checking 'isPalindrome' function")
+            println("'nurses run' should be true")
             assertEquals(true, palindromeResult)
+            println("'hello' should be false")
             assertEquals(false, nonPalindromeResult)
         } catch (e: NoSuchMethodException) {
             println("Exercise 7 failed: 'isPalindrome' function not found.")

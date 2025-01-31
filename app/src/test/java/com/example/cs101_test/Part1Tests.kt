@@ -356,8 +356,8 @@ class Part1Tests {
             val method = clazz.getDeclaredMethod("charFrequency", String::class.java)
             method.isAccessible = true
 
-            val result = method.invoke(instance, "hello") as Map<Char, Int>
-            assertEquals(mapOf('h' to 1, 'e' to 1, 'l' to 2, 'o' to 1), result)
+            val result = method.invoke(instance, "hello, world") as Map<Char, Int>
+            assertEquals(mapOf('h' to 1, 'e' to 1, 'l' to 3, 'o' to 2, 'w' to 1, 'r' to 1, 'd' to 1), result)
         } catch (e: NoSuchMethodException) {
             println("Exercise 14 failed: 'charFrequency' method not found.")
             fail("Exercise 14 failed: 'charFrequency' method not found.")

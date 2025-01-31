@@ -26,13 +26,4 @@ object Part5InterfacesAndAbstractClasses {
     //      Should you try to withdraw more money than allowed, it should print: "Insufficient funds"
 
 
-    // ---------------------- EXERCISE 3
-    // Create an interface called Appliance with 3 properties: brand, powerConsumption, and isOn
-    // Add methods: turnOn(), turnOff(), and showStatus() that need to be implemented by classes
-    // Create 2 classes (WashingMachine and Refrigerator) that implement the Appliance interface
-    //   - WashingMachine should have an additional property: loadCapacity
-    //   - Refrigerator should have an additional property: temperature
-    // Each class should implement the methods to manage the appliance state and show its status
-    // The showStatus function should print a text that must include either the word "On" or "Off" depending on isOn
-
 }

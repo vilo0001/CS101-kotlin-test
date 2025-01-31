@@ -68,56 +68,7 @@ class Part3Tests {
 
     // ---------------------- EXERCISE 2
     @Test
-    fun `exercise 02 testCarClass`() {
-        val carClass = try {
-            clazz.declaredClasses.first { it.simpleName == "Car" }
-        } catch (e: NoSuchElementException) {
-            null
-        }
-
-        if (carClass == null) {
-            println("Exercise 2 failed: 'Car' class not found.")
-            fail("Exercise 2 failed: 'Car' class not found.")
-        }
-
-        try {
-            val constructor = carClass.getConstructor(String::class.java, Int::class.java, Boolean::class.java)
-            val carInstance = constructor.newInstance("Model1", 2020, false)
-            val startMethod = carClass.getMethod("startCar")
-            val stopMethod = carClass.getMethod("stopCar")
-
-            println("Testing 'Car' class and its methods")
-            assertNotNull(carInstance)
-            assertNotNull(startMethod)
-            assertNotNull(stopMethod)
-
-            val isRunningField = carClass.getDeclaredField("isRunning")
-            isRunningField.isAccessible = true
-
-            println("Testing startCar()")
-            // Check if isRunning is true after starting the car
-            startMethod.invoke(carInstance)
-            var isRunning = isRunningField.getBoolean(carInstance)
-            assertTrue(isRunning, "Expected isRunning to be true after starting the car.")
-
-            println("Testing stopCar()")
-            // Check if isRunning is false after stopping the car
-            stopMethod.invoke(carInstance)
-            isRunning = isRunningField.getBoolean(carInstance)
-            assertFalse(isRunning, "Expected isRunning to be false after stopping the car.")
-
-        } catch (e: NoSuchMethodException) {
-            println("Exercise 2 failed: Method not found ${e.message?.split("Part3ClassesAndObjects\$Car")?.getOrNull(1) ?: e.message}")
-            fail("Exercise 2 failed: Method not found ${e.message?.split("Part3ClassesAndObjects\$Car")?.getOrNull(1) ?: e.message}")
-        } catch (e: Exception) {
-            println("Exercise 2 failed: ${e.message}")
-            fail("Exercise 2 failed: ${e.message}")
-        }
-    }
-
-    // ---------------------- EXERCISE 3
-    @Test
-    fun `exercise 03 testStudentClass`() {
+    fun `exercise 02 testStudentClass`() {
         val studentClass = try {
             clazz.declaredClasses.first { it.simpleName == "Student" }
         } catch (e: NoSuchElementException) {
@@ -125,8 +76,8 @@ class Part3Tests {
         }
 
         if (studentClass == null) {
-            println("Exercise 3 failed: 'Student' class not found.")
-            fail("Exercise 3 failed: 'Student' class not found.")
+            println("Exercise 2 failed: 'Student' class not found.")
+            fail("Exercise 2 failed: 'Student' class not found.")
         }
 
         try {
@@ -162,18 +113,17 @@ class Part3Tests {
             assertTrue(output.contains("80.0"), "Expected output to contain '80.0'.")
 
         } catch (e: NoSuchMethodException) {
-            println("Exercise 3 failed: Method not found ${e.message?.split("Part3ClassesAndObjects\$Student")?.getOrNull(1) ?: e.message}")
-            fail("Exercise 3 failed: Method not found ${e.message?.split("Part3ClassesAndObjects\$Student")?.getOrNull(1) ?: e.message}")
+            println("Exercise 2 failed: Method not found ${e.message?.split("Part3ClassesAndObjects\$Student")?.getOrNull(1) ?: e.message}")
+            fail("Exercise 2 failed: Method not found ${e.message?.split("Part3ClassesAndObjects\$Student")?.getOrNull(1) ?: e.message}")
         } catch (e: Exception) {
-            println("Exercise 3 failed: ${e.message}")
-            fail("Exercise 3 failed: ${e.message}")
+            println("Exercise 2 failed: ${e.message}")
+            fail("Exercise 2 failed: ${e.message}")
         }
     }
 
-
-    // ---------------------- EXERCISE 4
+    // ---------------------- EXERCISE 3
     @Test
-    fun `exercise 04 testBankAccountClass`() {
+    fun `exercise 03 testBankAccountClass`() {
         val bankAccountClass = try {
             clazz.declaredClasses.first { it.simpleName == "BankAccount" }
         } catch (e: NoSuchElementException) {
@@ -181,8 +131,8 @@ class Part3Tests {
         }
 
         if (bankAccountClass == null) {
-            println("Exercise 4 failed: 'BankAccount' class not found.")
-            fail("Exercise 4 failed: 'BankAccount' class not found.")
+            println("Exercise 3 failed: 'BankAccount' class not found.")
+            fail("Exercise 3 failed: 'BankAccount' class not found.")
         }
 
         try {
@@ -227,166 +177,17 @@ class Part3Tests {
             assertTrue(output.contains("Alice"), "Exercise 3 failed: displayDetails did not print all details.")
 
         } catch (e: NoSuchMethodException) {
-            println("Exercise 4 failed: Method not found ${e.message?.split("Part3ClassesAndObjects\$BankAccount")?.getOrNull(1) ?: e.message}")
-            fail("Exercise 4 failed: Method not found ${e.message?.split("Part3ClassesAndObjects\$BankAccount")?.getOrNull(1) ?: e.message}")
+            println("Exercise 3 failed: Method not found ${e.message?.split("Part3ClassesAndObjects\$BankAccount")?.getOrNull(1) ?: e.message}")
+            fail("Exercise 3 failed: Method not found ${e.message?.split("Part3ClassesAndObjects\$BankAccount")?.getOrNull(1) ?: e.message}")
         } catch (e: Exception) {
-            println("Exercise 4 failed: ${e.message}")
-            fail("Exercise 4 failed: ${e.message}")
+            println("Exercise 3 failed: ${e.message}")
+            fail("Exercise 3 failed: ${e.message}")
         }
     }
 
-    // ---------------------- EXERCISE 5
+    // ---------------------- EXERCISE 4
     @Test
-    fun `exercise 05 testLibraryClass`() {
-        val libraryClass = try {
-            clazz.declaredClasses.first { it.simpleName == "Library" }
-        } catch (e: NoSuchElementException) {
-            null
-        }
-
-        if (libraryClass == null) {
-            println("Exercise 5 failed: 'Library' class not found.")
-            fail("Exercise 5 failed: 'Library' class not found.")
-        }
-
-        val bookClass = try {
-            clazz.declaredClasses.first { it.simpleName == "Book" }
-        } catch (e: NoSuchElementException) {
-            null
-        }
-
-        if (bookClass == null) {
-            println("Exercise 5 failed: 'Book' class not found.")
-            fail("Exercise 5 failed: 'Book' class not found.")
-        }
-
-        try {
-            val libraryConstructor = libraryClass.getConstructor()
-            val libraryInstance = libraryConstructor.newInstance()
-            val addBookMethod = libraryClass.getMethod("addBook", bookClass)
-            val removeBookMethod = libraryClass.getMethod("removeBook", bookClass)
-            val listBooksMethod = libraryClass.getMethod("listBooks")
-
-            val bookConstructor = bookClass.getConstructor(String::class.java, String::class.java, Double::class.java)
-            val bookInstance = bookConstructor.newInstance("Title1", "Author1", 10.0)
-
-            println("Testing 'Library' class and its methods")
-            assertNotNull(libraryInstance)
-            assertNotNull(addBookMethod)
-            assertNotNull(removeBookMethod)
-            assertNotNull(listBooksMethod)
-            assertNotNull(bookInstance)
-
-            println("Testing addBook()")
-            // Add book and check the list of books
-            addBookMethod.invoke(libraryInstance, bookInstance)
-            val booksField = libraryClass.getDeclaredField("books")
-            booksField.isAccessible = true
-            var booksList = booksField.get(libraryInstance) as List<*>
-            assertTrue(booksList.contains(bookInstance), "Expected books list to contain the added book.")
-
-            println("Testing removeBook()")
-            // Remove book and check the list of books
-            removeBookMethod.invoke(libraryInstance, bookInstance)
-            booksList = booksField.get(libraryInstance) as List<*>
-            assertFalse(booksList.contains(bookInstance), "Expected books list to not contain the removed book.")
-
-            println("Testing listBooks()")
-            // Test listBooks method directly
-            val listBooksOutput = captureOutput {
-                listBooksMethod.invoke(libraryInstance)
-            }
-            assertTrue(listBooksOutput.contains("Books in library:"), "Expected output to contain 'Books in library:'.")
-
-        } catch (e: NoSuchMethodException) {
-            println("Exercise 5 failed: Method not found ${e.message?.split("Library")?.getOrNull(1) ?: e.message}")
-            fail("Exercise 5 failed: Method not found ${e.message?.split("Library")?.getOrNull(1) ?: e.message}")
-        } catch (e: Exception) {
-            println("Exercise 5 failed: ${e.message}")
-            fail("Exercise 5 failed: ${e.message}")
-        }
-    }
-
-
-    // ---------------------- EXERCISE 6
-    @Test
-    fun `exercise 06 testSmartphoneClass`() {
-        val smartphoneClass = try {
-            clazz.declaredClasses.first { it.simpleName == "Smartphone" }
-        } catch (e: NoSuchElementException) {
-            null
-        }
-
-        if (smartphoneClass == null) {
-            println("Exercise 6 failed: 'Smartphone' class not found.")
-            fail("Exercise 6 failed: 'Smartphone' class not found.")
-        }
-
-        try {
-            val constructor = smartphoneClass.getConstructor(String::class.java, String::class.java)
-            val smartphoneInstance = constructor.newInstance("Brand1", "Model1")
-            val turnOnMethod = smartphoneClass.getMethod("turnOn")
-            val turnOffMethod = smartphoneClass.getMethod("turnOff")
-            val chargeBatteryMethod = smartphoneClass.getMethod("chargeBattery")
-            val displayMethod = smartphoneClass.getMethod("displayDetails")
-
-            println("Testing 'Smartphone' class and its methods")
-            assertNotNull(smartphoneInstance)
-            assertNotNull(turnOnMethod)
-            assertNotNull(turnOffMethod)
-            assertNotNull(chargeBatteryMethod)
-            assertNotNull(displayMethod)
-
-            println("Testing turnOn()")
-            // Test turnOn method
-            turnOnMethod.invoke(smartphoneInstance)
-            val isOnField = smartphoneClass.getDeclaredField("isOn")
-            isOnField.isAccessible = true
-            var isOn = isOnField.getBoolean(smartphoneInstance)
-            assertTrue(isOn, "Expected isOn to be true after turning on the phone.")
-
-            println("Testing turnOff()")
-            // Test turnOff method
-            turnOffMethod.invoke(smartphoneInstance)
-            isOn = isOnField.getBoolean(smartphoneInstance)
-            assertFalse(isOn, "Expected isOn to be false after turning off the phone.")
-
-            println("Testing turnOn() doublecheck")
-            // Test turnOn method
-            turnOnMethod.invoke(smartphoneInstance)
-            isOn = isOnField.getBoolean(smartphoneInstance)
-            assertTrue(isOn, "Expected isOn to be true after turning on the phone.")
-
-            println("Testing chargeBattery()")
-            // Test chargeBattery method
-            chargeBatteryMethod.invoke(smartphoneInstance)
-            val batteryLevelField = smartphoneClass.getDeclaredField("batteryLevel")
-            batteryLevelField.isAccessible = true
-            val batteryLevel = batteryLevelField.getInt(smartphoneInstance)
-            assertEquals(100, batteryLevel, "Expected battery level to be 100 after charging.")
-
-            println("Testing displayDetails()")
-            // Capture output and test displayDetails method
-            val output = captureOutput {
-                displayMethod.invoke(smartphoneInstance)
-            }
-            assertTrue(output.contains("Brand: Brand1"), "Expected output to contain 'Brand: Brand1'.")
-            assertTrue(output.contains("Model: Model1"), "Expected output to contain 'Model: Model1'.")
-            assertTrue(output.contains("Battery Level: 100%"), "Expected output to contain 'Battery Level: 100%'.")
-            assertTrue(output.contains("Is On: true"), "Expected output to contain 'Is On: true'.")
-
-        } catch (e: NoSuchMethodException) {
-            println("Exercise 6 failed: Method not found ${e.message?.split("Smartphone")?.getOrNull(1) ?: e.message}")
-            fail("Exercise 6 failed: Method not found ${e.message?.split("Smartphone")?.getOrNull(1) ?: e.message}")
-        } catch (e: Exception) {
-            println("Exercise 6 failed: ${e.message}")
-            fail("Exercise 6 failed: ${e.message}")
-        }
-    }
-
-    // ---------------------- EXERCISE 7
-    @Test
-    fun `exercise 07 testShopClass`() {
+    fun `exercise 04 testShopClass`() {
         val productClass = try {
             clazz.declaredClasses.first { it.simpleName == "Product" }
         } catch (e: NoSuchElementException) {
@@ -394,8 +195,8 @@ class Part3Tests {
         }
 
         if (productClass == null) {
-            println("Exercise 7 failed: 'Product' class not found.")
-            fail("Exercise 7 failed: 'Product' class not found.")
+            println("Exercise 4 failed: 'Product' class not found.")
+            fail("Exercise 4 failed: 'Product' class not found.")
         }
 
         val shopClass = try {
@@ -405,8 +206,8 @@ class Part3Tests {
         }
 
         if (shopClass == null) {
-            println("Exercise 7 failed: 'Shop' class not found.")
-            fail("Exercise 7 failed: 'Shop' class not found.")
+            println("Exercise 4 failed: 'Shop' class not found.")
+            fail("Exercise 4 failed: 'Shop' class not found.")
         }
 
         try {
@@ -475,11 +276,11 @@ class Part3Tests {
             assertEquals(1, filteredProducts.size, "Expected one product in the filtered list.")
 
         } catch (e: NoSuchMethodException) {
-            println("Exercise 7 failed: Method not found ${e.message?.split("Shop")?.getOrNull(1) ?: e.message}")
-            fail("Exercise 7 failed: Method not found ${e.message?.split("Shop")?.getOrNull(1) ?: e.message}")
+            println("Exercise 4 failed: Method not found ${e.message?.split("Shop")?.getOrNull(1) ?: e.message}")
+            fail("Exercise 4 failed: Method not found ${e.message?.split("Shop")?.getOrNull(1) ?: e.message}")
         } catch (e: Exception) {
-            println("Exercise 7 failed: ${e.message}")
-            fail("Exercise 7 failed: ${e.message}")
+            println("Exercise 4 failed: ${e.message}")
+            fail("Exercise 4 failed: ${e.message}")
         }
     }
 }

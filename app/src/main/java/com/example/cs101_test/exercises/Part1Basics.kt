@@ -21,7 +21,7 @@ object Part1Basics {
     }
 
     // ---------------------- EXERCISE 5
-    // Write a function to check if a number is even or odd and return a boolean.
+    // Write a function to check if a number is even or odd and return true if even and false if odd.
     fun isEven(number: Int): Boolean {
         // Your code here
         return false
@@ -63,7 +63,7 @@ object Part1Basics {
     }
 
     // ---------------------- EXERCISE 11
-    // Create a function that checks if a number is positive and returns a boolean.
+    // Create a function that checks if a number is positive and returns a boolean. 0 is not positive.
     fun isPositive(number: Int): Boolean {
         // Your code here
         return false
@@ -85,6 +85,10 @@ object Part1Basics {
 
     // ---------------------- EXERCISE 14
     // Create a function that returns a map of characters to their frequency in a string.
+    // Ignore numbers, punctuation and all that is not a character A-Z or a-z.
+    // Example:
+    //      Input: "hello, world"
+    //      Expected Output: {h=1, e=1, l=3, o=2, w=1, r=1, d=1}
     fun charFrequency(str: String): Map<Char, Int> {
         // Your code here
         return mapOf()

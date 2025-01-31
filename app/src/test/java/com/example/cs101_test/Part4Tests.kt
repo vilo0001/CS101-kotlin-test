@@ -251,59 +251,10 @@ class Part4Tests {
         }
     }
 
+
     // ---------------------- EXERCISE 3
     @Test
-    fun `exercise 03 testLibraryClass`() {
-        val libraryClass = try {
-            clazz.declaredClasses.first { it.simpleName == "Library" }
-        } catch (e: NoSuchElementException) {
-            null
-        }
-
-        if (libraryClass == null) {
-            println("Exercise 3 failed: 'Library' class not found.")
-            fail("Exercise 3 failed: 'Library' class not found.")
-        }
-
-        try {
-            val libraryConstructor = libraryClass.getConstructor(String::class.java, String::class.java)
-            val libraryInstance = libraryConstructor.newInstance("City Library", "Downtown")
-
-            val booksField = libraryClass.getDeclaredField("books")
-            booksField.isAccessible = true
-
-            println("Testing 'Library' class and its properties")
-            assertNotNull(libraryInstance)
-            assertNotNull(booksField)
-
-            println("Testing setter for books property with non-empty list")
-            // Test setter with non-empty list
-            var books = booksField.get(libraryInstance) as List<*>
-            val newBooksList = listOf("1984", "To Kill a Mockingbird")
-            booksField.set(libraryInstance, newBooksList)
-            books = booksField.get(libraryInstance) as List<*>
-            assertTrue(books.contains("1984"), "Expected books list to contain '1984'.")
-            assertTrue(books.contains("To Kill a Mockingbird"), "Expected books list to contain 'To Kill a Mockingbird'.")
-
-            println("Testing setter for books property with empty list")
-            // Test setter with empty list
-            val booksSetter = libraryClass.getMethod("setBooks", List::class.java)
-            booksSetter.invoke(libraryInstance, emptyList<String>())
-            books = booksField.get(libraryInstance) as List<*>
-            assertTrue(books.contains("Default Book"), "Expected books list to contain 'Default Book' when set to empty list.")
-
-        } catch (e: NoSuchMethodException) {
-            println("Exercise 3 failed: Method not found ${e.message?.split("Library")?.getOrNull(1) ?: e.message}")
-            fail("Exercise 3 failed: Method not found ${e.message?.split("Library")?.getOrNull(1) ?: e.message}")
-        } catch (e: Exception) {
-            println("Exercise 3 failed: ${e.message}")
-            fail("Exercise 3 failed: ${e.message}")
-        }
-    }
-
-    // ---------------------- EXERCISE 4
-    @Test
-    fun `exercise 04 testCourseClass`() {
+    fun `exercise 03 testCourseClass`() {
         val courseClass = try {
             clazz.declaredClasses.first { it.simpleName == "Course" }
         } catch (e: NoSuchElementException) {
@@ -311,8 +262,8 @@ class Part4Tests {
         }
 
         if (courseClass == null) {
-            println("Exercise 4 failed: 'Course' class not found.")
-            fail("Exercise 4 failed: 'Course' class not found.")
+            println("Exercise 3 failed: 'Course' class not found.")
+            fail("Exercise 3 failed: 'Course' class not found.")
         }
 
         try {
@@ -326,8 +277,8 @@ class Part4Tests {
             }
 
             if (creditsField == null) {
-                println("Exercise 4 failed: 'credits' field not found.")
-                fail("Exercise 4 failed: 'credits' field not found.")
+                println("Exercise 3 failed: 'credits' field not found.")
+                fail("Exercise 3 failed: 'credits' field not found.")
             }
 
             val courseDurationMethod = try {
@@ -337,8 +288,8 @@ class Part4Tests {
             }
 
             if (courseDurationMethod == null) {
-                println("Exercise 4 failed: 'courseDuration' method not found.")
-                fail("Exercise 4 failed: 'courseDuration' method not found.")
+                println("Exercise 3 failed: 'courseDuration' method not found.")
+                fail("Exercise 3 failed: 'courseDuration' method not found.")
             }
 
             val creditsSetter = courseClass.getMethod("setCredits", Int::class.java)
@@ -370,18 +321,18 @@ class Part4Tests {
             assertEquals(45, courseDuration, "Expected courseDuration to be 45 hours (3 credits * 15 hours).")
 
         } catch (e: NoSuchMethodException) {
-            println("Exercise 4 failed: Method not found ${e.message?.split("Course")?.getOrNull(1) ?: e.message}")
-            fail("Exercise 4 failed: Method not found ${e.message?.split("Course")?.getOrNull(1) ?: e.message}")
+            println("Exercise 3 failed: Method not found ${e.message?.split("Course")?.getOrNull(1) ?: e.message}")
+            fail("Exercise 3 failed: Method not found ${e.message?.split("Course")?.getOrNull(1) ?: e.message}")
         } catch (e: Exception) {
-            println("Exercise 4 failed: ${e.message}")
-            fail("Exercise 4 failed: ${e.message}")
+            println("Exercise 3 failed: ${e.message}")
+            fail("Exercise 3 failed: ${e.message}")
         }
     }
 
 
-    // ---------------------- EXERCISE 5
+    // ---------------------- EXERCISE 4
     @Test
-    fun `exercise 05 testAthleteClass`() {
+    fun `exercise 04 testAthleteClass`() {
         val athleteClass = try {
             clazz.declaredClasses.first { it.simpleName == "Athlete" }
         } catch (e: NoSuchElementException) {
@@ -389,8 +340,8 @@ class Part4Tests {
         }
 
         if (athleteClass == null) {
-            println("Exercise 5 failed: 'Athlete' class not found.")
-            fail("Exercise 5 failed: 'Athlete' class not found.")
+            println("Exercise 4 failed: 'Athlete' class not found.")
+            fail("Exercise 4 failed: 'Athlete' class not found.")
         }
 
         try {
@@ -416,11 +367,11 @@ class Part4Tests {
             assertTrue(fitnessLevelValue in 0..100, "Expected fitness level to be between 0 and 100.")
 
         } catch (e: NoSuchMethodException) {
-            println("Exercise 5 failed: Method not found ${e.message?.split("Athlete")?.getOrNull(1) ?: e.message}")
-            fail("Exercise 5 failed: Method not found ${e.message?.split("Athlete")?.getOrNull(1) ?: e.message}")
+            println("Exercise 4 failed: Method not found ${e.message?.split("Athlete")?.getOrNull(1) ?: e.message}")
+            fail("Exercise 4 failed: Method not found ${e.message?.split("Athlete")?.getOrNull(1) ?: e.message}")
         } catch (e: Exception) {
-            println("Exercise 5 failed: ${e.message}")
-            fail("Exercise 5 failed: ${e.message}")
+            println("Exercise 4 failed: ${e.message}")
+            fail("Exercise 4 failed: ${e.message}")
         }
     }
 }

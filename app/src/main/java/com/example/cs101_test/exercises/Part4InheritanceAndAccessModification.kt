@@ -10,7 +10,45 @@ object Part4InheritanceAndAccessModification {
     // Create 2 classes (WashingMachine and Refrigerator) that extend the Appliance class
     //      and add a method to show/print their unique features e.g. has a quick wash feature (showFeatures).
     //      The showFeatures method must print something and not be blank, but you can choose what you want it to print!
+    open class Appliance(
+        val brand: String,
+        val powerConsumption: Int,
+        var isOn: Boolean
+    ) {
+        fun turnOn() {
+            isOn = true;
+        }
 
+        fun turnOff() {
+            isOn = false;
+        }
+
+        override fun toString(): String {
+            return ""
+        }
+    }
+
+    class WashingMachine(
+        brand: String,
+        powerConsumption: Int,
+        isOn: Boolean
+    ): Appliance(brand, powerConsumption, isOn) {
+        val extraFeature: String = "Super washing";
+        fun showFeature() {
+            println(extraFeature);
+        }
+    }
+
+    class Refrigerator(
+        brand: String,
+        powerConsumption: Int,
+        isOn: Boolean
+    ): Appliance(brand, powerConsumption, isOn) {
+        val extraFeature: String = "Mega cool";
+        fun showFeature() {
+            println(extraFeature);
+        }
+    }
 
     // ---------------------- EXERCISE 2
     // Create a base class called Employee with properties: name, position, and salary
@@ -19,6 +57,48 @@ object Part4InheritanceAndAccessModification {
     // Implement the method work() for all classes, which prints a message indicating the type of work the employee is doing
     // E.g. an Employee.work() should print one thing and Developer.work() another
     // The work() method must print something and not be blank, but you can choose what you want it to print!
+    open class Employee(
+        var name: String,
+        var position: String,
+        var salary: Double
+    ) {
+        open fun work() {
+            println("Work work..");
+        }
+    }
+
+    class Manager(
+        name: String,
+        position: String,
+        salary: Double,
+        var department: String
+    ): Employee(name, position, salary) {
+        override fun work() {
+            println("Big boss moves.");
+        }
+    }
+
+    class Developer(
+        name: String,
+        position: String,
+        salary: Double,
+        var programmingLanguage: String
+    ): Employee(name, position, salary) {
+        override fun work() {
+            println("*weird keyboard noises*");
+        }
+    }
+
+    class Intern(
+        name: String,
+        position: String,
+        salary: Double,
+        var school: String
+    ): Employee(name, position, salary) {
+        override fun work() {
+            println("Sit in the corner and wonder what to do.");
+        }
+    }
 
 
     // ---------------------- EXERCISE 3
@@ -38,6 +118,19 @@ object Part4InheritanceAndAccessModification {
     //             field = if (value in 0..150) value else 0
     //         }
     // }
+    open class Course(
+        var courseName: String,
+        var instructor: String,
+        credits: Float
+    ) {
+        var credits = credits
+            set(value) {
+                require(value in 1.0..5.0);
+                field = value;
+            }
+        val courseDuration: Float
+            get() = credits * 15;
+    }
 
 
     // ---------------------- EXERCISE 4
@@ -46,6 +139,16 @@ object Part4InheritanceAndAccessModification {
     // To make calculateFitnessLevel easy to implement, just make it return an Int between 0 and 100 - you choose how to calculate it!
     // The class should have a public field fitnessLevel which uses the private function to return a result.
     // The setter for fitnessLevel should be private
+    class Athlete(
+        var id: Int,
+        var name: String
+    ) {
+        var fitnessLevel = calculateFitnessLevel()
+            private set
 
+        private fun calculateFitnessLevel(): Int {
+            return name.length;
+        }
+    }
 
 }
